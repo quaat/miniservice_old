@@ -1,0 +1,16 @@
+import requests
+
+class APIClient:
+    def __init__(self, base_url="http://localhost:8080"):
+        self.base_url = base_url
+
+    def hello_world(self):
+        """
+        Calls the "/" endpoint to get a "Hello World" message.
+
+        :return: The response from the API as a dictionary.
+        """
+        response = requests.get(f"{self.base_url}/")
+        response.raise_for_status()  # Raises an HTTPError if the response was an error
+        return response.json()
+
